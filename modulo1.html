@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Módulo 1 - Figuras Básicas</title>
+</head>
+<body onload="dibujar()">
+<h2>Módulo 1: Dibujo de Figuras Básicas</h2>
+<canvas id="miCanvas" width="400" height="300" style="border:1px solid black;">
+  Tu navegador no soporta Canvas.
+</canvas>
+
+<script>
+function dibujar() {
+  const canvas = document.getElementById("miCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Rectángulo relleno
+  ctx.fillRect(25, 25, 100, 100);
+
+  // Limpiar parte central del rectángulo
+  ctx.clearRect(45, 45, 60, 60);
+
+  // Contorno de rectángulo
+  ctx.strokeRect(50, 50, 50, 50);
+
+  // Triángulo
+  ctx.beginPath();
+  ctx.moveTo(200, 50);
+  ctx.lineTo(150, 150);
+  ctx.lineTo(250, 150);
+  ctx.closePath();
+  ctx.stroke();
+
+  // Círculo (cara sonriente simple)
+  ctx.beginPath();
+  ctx.arc(320, 80, 40, 0, Math.PI * 2, true); // cara
+  ctx.moveTo(350, 80);
+  ctx.arc(320, 80, 30, 0, Math.PI, false); // boca
+  ctx.moveTo(310, 70);
+  ctx.arc(305, 70, 5, 0, Math.PI * 2, true); // ojo izquierdo
+  ctx.moveTo(340, 70);
+  ctx.arc(335, 70, 5, 0, Math.PI * 2, true); // ojo derecho
+  ctx.stroke();
+}
+</script>
+</body>
+</html>
+
+

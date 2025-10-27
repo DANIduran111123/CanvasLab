@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Módulo 2 - Animaciones Fluidas</title>
+</head>
+<body>
+<h2>Módulo 2: Animaciones Fluidas</h2>
+<canvas id="miCanvas" width="400" height="300" style="border:1px solid black;">
+  Tu navegador no soporta Canvas.
+</canvas>
+
+<script>
+const canvas = document.getElementById("miCanvas");
+const ctx = canvas.getContext("2d");
+
+let x = 50;
+let y = 50;
+let dx = 2;
+let dy = 2;
+
+function animar() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.beginPath();
+  ctx.arc(x, y, 20, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.closePath();
+
+  // Mover la pelota
+  x += dx;
+  y += dy;
+
+  // Rebote en bordes
+  if (x + 20 > canvas.width || x - 20 < 0) dx = -dx;
+  if (y + 20 > canvas.height || y - 20 < 0) dy = -dy;
+
+  requestAnimationFrame(animar);
+}
+animar();
+</script>
+</body>
+</html>
+
+
